@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import React from "react";
 import { product } from "../../data";
 import "./Home.css";

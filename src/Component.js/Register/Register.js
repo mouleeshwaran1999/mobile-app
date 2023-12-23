@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../Common.css";
 import "./Register.css";
 import { ConstantString } from "../../Constant-String";
 import { Link } from "react-router-dom";
 const Register = () => {
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
   const [user, setUserDetails] = useState({
     fname: "",
     lname: "",
