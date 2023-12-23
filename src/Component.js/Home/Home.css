@@ -1,0 +1,21 @@
+.home_cointainer {
+  height: 100%;
+  overflow: scroll;
+}
+.home_items {
+  width: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: rgb(140, 137, 151);
+}
+.home_item_box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 151px;
+  background-color: red;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 5px;
+}
