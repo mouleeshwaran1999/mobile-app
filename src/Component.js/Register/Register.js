@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "../../Common.css";
 import "./Register.css";
 import { ConstantString } from "../../Constant-String";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [formErrors, setFormErrors] = useState({});
+  const navigate = useNavigate();
   const [user, setUserDetails] = useState({
     fname: "",
     lname: "",
@@ -55,9 +56,12 @@ const Register = () => {
     doRegister();
   };
   const doRegister = () => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then(console.log);
+    if (user.cpassword && user.email && user.fname && user.password) {
+      fetch("https://dummyjson.com/products")
+        .then((res) => res.json())
+        .then(console.log);
+      navigate("/Login");
+    }
   };
 
   return (

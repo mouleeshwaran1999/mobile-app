@@ -17,28 +17,42 @@ const Login = ({ setUserState }) => {
       [name]: value,
     });
   };
+  var error = {};
   const validateForm = (user) => {
-    var error = {};
+    console.log(user);
     const regex = ConstantString.emailRegex;
     if (!user.email) {
+      // setFormErrors({
+      //   ...formErrors,
+      //   email: ConstantString.vaildEmailErr,
+      //   password: ConstantString.PasswordRequiredErr,
+      // });
+      setFormErrors((e) => {
+        return { ...e, email: ConstantString.emialRequiredErr };
+      });
       error.email = ConstantString.emialRequiredErr;
     } else if (!regex.test(user.email)) {
+      setFormErrors((e) => {
+        return { ...e, password: error.email };
+      });
       error.email = ConstantString.vaildEmailErr;
     }
     if (!user.password) {
       error.password = ConstantString.PasswordRequiredErr;
+      setFormErrors((e) => {
+        return { ...e, password: error.password };
+      });
     }
-    return setFormErrors(error);
   };
 
   const loginHandler = async (e) => {
     e.preventDefault();
     validateForm(user);
-    console.log(formErrors);
     doLogin();
   };
+  console.log(formErrors);
   const doLogin = () => {
-    if (!formErrors.value) {
+    if (!error.email || !error.password) {
       fetch("https://dummyjson.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
